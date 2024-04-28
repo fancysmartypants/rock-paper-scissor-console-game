@@ -11,11 +11,28 @@ console.log("Hello World");
  */
 //RETURNS ANS 
 function getComputerChoice(){
-    const choices=["Rock","Paper","Scissor"];
+    const choices=["rock","paper","scissor"];
     //console.log(choices[0]);
     const int= Math.round(Math.random()*3);
     //console.log(int);
     return answer=choices[int];
 }
 
+
+//DECLARE A FUNCTION getHumanChoice
+/**
+ * getHumanChoice will prompt user input and store it in string datatype ANS
+ * if user input neither of it, prompt them to do it again.
+ */
+//RETURN answer
+function getHumanChoice(){
+    let answer;
+    answer = prompt("What is your choice among: rock, paper, scissor? Enter one of the three,",undefined);
+    //console.log(answer);
+    while ( !(answer == "rock" || answer=="paper" || answer=="scissor")) {
+        return answer = prompt("Try again. Enter one among the three: rock, paper, scissor.",undefined);
+    }
+   // console.log(answer);
+    return answer;
+}
 

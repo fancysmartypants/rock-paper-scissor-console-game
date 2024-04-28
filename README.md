@@ -86,7 +86,7 @@ Create a function playRound that takes computer choice and human choice and retu
 
 Create a function playGame:
     Call getcomputerchoice
-    Call getHumanchoice
+    Call getHumanChoice
     call playRound
 
 Lastly, use the while loop to iterate playGame five times. At the end of the game, show player score and show winner score. These two can be functions of their own as well. 
