@@ -45,11 +45,13 @@ IF round is 5
     ENDIF
 ENDIF
 
+This would be the overarching structure of the game. The game is composed of five rounds. In the same round of the game, players draw their option. The round happens five times. After the final round, the result is shown. The player gets an option of whether they would like to continue the same process another time.
 
 Here is a pseudocode of playGame, how the game runs:
 
 The game runs can be a function called playGame.
 When playGame is called, here is what happens:
+
 Prompt user input and store it in userChoice.
 
 Generate random option and store it in
@@ -61,7 +63,7 @@ prompt user input can become getHumanChoice
 generate random option can become getComputerChoice
 compare the two to update the score of each player can become a function called playRound
 
-So how will the playRound function work? 
+So how will the playRound function work? Here is the pseudocode for playRound:
 
 if getHumanChoice is the same as getComputerChoice
     No one gets a point.
@@ -74,23 +76,36 @@ if either or is scissor and either or is paper
 if either or is rock and either or is paper
     The one with paper gets one point
 
-So now, here is a third version of the pseudocode, about how I will implement the code of the game:
+So now, here is a third version of the pseudocode, of how I will implement writing the code of the game:
 
-create a function getComputerChoice
+Create a function getComputerChoice
 
-create a function getHumanChoice
+Create a function getHumanChoice
 
-create a function playRound that takes computer choice and human choice and returns a result.
+Create a function playRound that takes computer choice and human choice and returns a result.
 
-create a function playGame:
+Create a function playGame:
     Call getcomputerchoice
     Call getHumanchoice
     call playRound
 
-lastly, use the while loop to iterate playGame five times. At the end of the game, show player score and show winner score. These two can be functions of their own as well. 
+Lastly, use the while loop to iterate playGame five times. At the end of the game, show player score and show winner score. These two can be functions of their own as well. 
 
 
+So here it is, the pseudocode of the entire program. 
+
+# Going from pseudocode to code
+
+I will make GitHub commits every time I have completed an important feature. The code will be there to explain the implementation comments to the computer. 
 
 
+# Important concepts encountered during implementation
 
+Uniform distribution: Uniform distribution is a probability distribution where every possible outcome has an equal likelihood of occurring over a specified range. 
+
+An idealized random number generator is one that generates a random variable that has the same likelihood as all the other random variables on a specified range. Such a variable may take on any real value within a specified range, and this is called a continuous uniform distribution.
+
+Discrete uniform distribution is when the possible outcomes are equal likely within a finite number of values. Such as outcomes of rolling a six sided die. Or the outcome of a player choosing between rock, paper and scissor. 
+
+We could model the discrete uniform distribution of an outcome chosen among three possible choices with a uniform distribution on the interval of 1-0.5 to 3+0.5. Each number fall on the continuous space from 0.5 to 3,5 will have an equal likelihood of being chosen. Any floating point number will be rounded to the closest integer with equal likelihood, hence the possible value that could be taken on becomes 1 and 2 and 3, with each value having equal odds of being picked.
 
