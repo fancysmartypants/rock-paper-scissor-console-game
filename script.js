@@ -36,3 +36,71 @@ function getHumanChoice(){
     return answer;
 }
 
+//DECLARE a FUNCTION playRound that takes computer choice and human choice
+// update score of each and returns the winner of the round
+function playRound(pc,player){
+
+    let winner; //stores winner of the round.
+
+    if (pc===player){
+        console.log("Uh-o, it's a match and it doesn't count. Try again.")
+        round_num-=1;
+    return playGame();
+    }else if ((pc == "rock" || player=="rock") && (pc =="scissor") || (player=="scissor")){
+        round_num=+1;
+        console.log("incremented round_num="+round_num);
+        if (pc=="rock"){
+            pc_score+=1;
+            return winner="pc";
+        }else{
+            player_score+=1;
+            return winner="player";
+        }
+   
+    }else if ((pc == "scissor" || player=="scissor") && (pc =="paper") || (player=="paper")) {
+        round_num=+1;
+        console.log("incremented round_num="+round_num);
+        if (pc=="scissor"){
+            pc_score+=1;
+            return winner="pc";
+        }else{
+            player_score+=1;
+            return winner="player";
+        }
+    }else if ((pc == "rock" || player=="rock") && (pc =="paper") || (player=="paper")){
+        round_num=+1;
+        console.log("incremented round_num="+round_num);
+        if (pc=="paper"){
+            pc_score+=1;
+            return winner="pc";
+        }else{
+            player_score+=1;
+            return winner="player";
+        }
+    }       
+}
+
+
+
+function playGame(){
+    console.log("starting round_num="+round_num);
+    let pcChoice, playerChoice;
+    pcChoice= getComputerChoice();
+    playerChoice= getHumanChoice();
+    playRound(pcChoice,playerChoice);
+    console.log("player score is:"+player_score);
+    console.log("pc score is:"+pc_score);
+    return round_num=+1;
+}
+
+//type this to the console:
+/**
+
+let pc_score=0, player_score=0;
+
+let round_num=0;
+
+playGame();
+
+ */
+
