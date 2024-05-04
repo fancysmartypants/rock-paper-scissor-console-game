@@ -1,4 +1,4 @@
-console.log("Hello World");
+console.log("JavaScript successfully loaded");
 
 //First, we make a function to get the computer generated answer
 
@@ -47,7 +47,7 @@ function playRound(pc,player){
         round_num-=1;
     return playGame();
     }else if ((pc == "rock" || player=="rock") && (pc =="scissor") || (player=="scissor")){
-        round_num=+1;
+        round_num+=1;
         console.log("incremented round_num="+round_num);
         if (pc=="rock"){
             pc_score+=1;
@@ -58,7 +58,7 @@ function playRound(pc,player){
         }
    
     }else if ((pc == "scissor" || player=="scissor") && (pc =="paper") || (player=="paper")) {
-        round_num=+1;
+        round_num+=1;
         console.log("incremented round_num="+round_num);
         if (pc=="scissor"){
             pc_score+=1;
@@ -68,7 +68,7 @@ function playRound(pc,player){
             return winner="player";
         }
     }else if ((pc == "rock" || player=="rock") && (pc =="paper") || (player=="paper")){
-        round_num=+1;
+        round_num+=1;
         console.log("incremented round_num="+round_num);
         if (pc=="paper"){
             pc_score+=1;
@@ -90,7 +90,7 @@ function playGame(){
     playRound(pcChoice,playerChoice);
     console.log("player score is:"+player_score);
     console.log("pc score is:"+pc_score);
-    return round_num=+1;
+    return round_num+=1;;
 }
 
 //type this to the console:
