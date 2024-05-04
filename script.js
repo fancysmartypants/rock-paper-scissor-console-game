@@ -1,5 +1,9 @@
 console.log("JavaScript successfully loaded");
 
+let winner=""; //stores winner of the round.
+let player_score=0;
+let pc_score=0;
+
 //First, we make a function to get the computer generated answer
 
 //DECLARE A FUNCTION getComputerChoice
@@ -40,7 +44,6 @@ function getHumanChoice(){
 // update score of each and returns the winner of the round
 function playRound(pc,player){
 
-    let winner; //stores winner of the round.
 
     if (pc===player){
         console.log("Uh-o, it's a match and it doesn't count. Try again.")
@@ -84,13 +87,24 @@ function playRound(pc,player){
 
 function playGame(){
     console.log("starting round_num="+round_num);
-    let pcChoice, playerChoice;
-    pcChoice= getComputerChoice();
-    playerChoice= getHumanChoice();
-    playRound(pcChoice,playerChoice);
-    console.log("player score is:"+player_score);
-    console.log("pc score is:"+pc_score);
-    return round_num+=1;;
+
+// use while look to playRound five times. 
+// In the end, show score and declare the winner
+
+    while (round_num!=5) {
+        const pcChoice= getComputerChoice();
+        const playerChoice= getHumanChoice();    
+        playRound(pcChoice,playerChoice);
+
+        console.log(`------END OF ROUND ${round_num}-------`);
+        console.log("player score is:"+player_score);
+        console.log("pc score is:"+pc_score);
+        console.log(`This round's winner is ${winner}`)
+        console.log(`------END OF ROUND ${round_num}-------`);
+    }
+    console.log(`------GAME OVER-------`);
+    declareResult();
+
 }
 
 //type this to the console:
@@ -103,4 +117,23 @@ let round_num=0;
 playGame();
 
  */
+
+
+let round_num=0;
+let final_winner="";
+
+function finalWinner(player_score,pc_score){
+    if (player_score>pc_score){
+        return final_winner="player";
+    }else{
+        return final_winner="PC";
+    }
+}
+
+function declareResult(){
+    console.log(`Your score is: ${player_score}`);
+    console.log(`PC score is: ${pc_score}`);
+    finalWinner(player_score,pc_score);
+    console.log(`Final winner is: ${final_winner} `)
+}
 
