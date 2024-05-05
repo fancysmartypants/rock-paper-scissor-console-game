@@ -3,15 +3,7 @@ body {
 
 }
 
-h1 {
-    display: flex;
-    justify-content: center;
-}
 
-div {
-    display: flex;
-    justify-content: center;
-}
 
 li {
     list-style-type: none;
@@ -24,3 +16,4 @@ ul {
     margin: 0;
     padding: 0;
   }
+

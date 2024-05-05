@@ -110,5 +110,5 @@ An idealized random number generator is one that generates a random variable tha
 
 Discrete uniform distribution is when the possible outcomes are equal likely within a finite number of values. Such as outcomes of rolling a six sided die. Or the outcome of a player choosing between rock, paper and scissor. 
 
-We could model the discrete uniform distribution of an outcome chosen among three possible choices with a uniform distribution on the interval of 1-0.5 to 3+0.5. Each number fall on the continuous space from 0.5 to 3,5 will have an equal likelihood of being chosen. Any floating point number will be rounded to the closest integer with equal likelihood, hence the possible value that could be taken on becomes 1 and 2 and 3, with each value having equal odds of being picked.
+We could model the discrete uniform distribution of an outcome that falls among 0,1 and 2 with a uniform distribution on the interval of 0-0.5 to 2+0.5. Each number fall on the continuous space from -0.5 to 2.5 will have an equal likelihood of being chosen. Any floating point number will be rounded to the closest integer with equal likelihood, hence the possible value that could be taken on becomes 1 and 2 and 3, with each value having equal odds of being picked.
 

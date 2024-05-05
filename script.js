@@ -8,8 +8,23 @@ let pc_score=0;
 function getComputerChoice(){
     const choices=["rock","paper","scissor"];
 
-    const int= Math.floor(Math.random()*3+0.5);
-    console.log(`const is ${int}`)
+    let int;
+
+    //generate an interval from -0.5 to 2.5
+    const randomVar = Math.random();
+    console.log(`randomVar is ${randomVar}`);
+    console.log(`randomVar*3-0.5 is ${randomVar*3-0.5}`);
+
+    //from 0 to 2.5 round down
+    if (randomVar*3-0.5 >0){
+        int= Math.floor(randomVar*3-0.5);
+    }else {//from -0.5 to 0 round up
+        int= Math.round(randomVar*3-0.5);
+    };
+
+
+
+    console.log(`int is ${int}`)
     return answer=choices[int];
 }
 
@@ -27,12 +42,13 @@ function getHumanChoice(){
     return answer;
 }
 
+const alertdiv = document.getElementById('alert');
 
 function playRound(pc,player){
     
     if (pc===player){
         console.log("Uh-o, it's a match. Try again.");
-        dashboard.appendChild(liMatch);
+        alertdiv.appendChild(liMatch);
         liMatch.textContent = matchTxt;
 
     }else if ((pc == "rock" || player=="rock") && (pc =="scissor") || (player=="scissor")){
@@ -135,7 +151,8 @@ const liMatch = document.createElement("li");
 
 // add event listener to rock button
 rock.addEventListener('click', (e)=>{
-    alert('clicked');
+    liMatch.remove();
+
     playerChoice = "rock";
     playerChoiceTxt = `You picked ${playerChoice}.`;
 
@@ -154,18 +171,43 @@ rock.addEventListener('click', (e)=>{
 
 // add event listener to paper button
 paper.addEventListener('click', (e)=>{
+    liMatch.remove();
 
-    playGame("paper");
+    playerChoice = "paper";
+    playerChoiceTxt = `You picked ${playerChoice}.`;
+
+    showPlayerChoice();
+
+    playGame(playerChoice);
+    
     console.log(`winner is ${winner}`);
+    console.log(`------ROUND ${round_num} RESULT:-------`);
+    console.log("player score is:"+player_score);
+    console.log("pc score is:"+pc_score);
+    console.log(`This round's winner is ${winner}`)
+    console.log(`------END OF ROUND ${round_num}-------`);
 
 });
 
 
 // add event listener to scissor button
 scissor.addEventListener('click', (e)=>{
+    liMatch.remove();
 
-    playGame("scissor");
+    playerChoice = "scissor";
+    playerChoiceTxt = `You picked ${playerChoice}.`;
+
+    showPlayerChoice();
+
+    playGame(playerChoice);
+    
     console.log(`winner is ${winner}`);
+    console.log(`------ROUND ${round_num} RESULT:-------`);
+    console.log("player score is:"+player_score);
+    console.log("pc score is:"+pc_score);
+    console.log(`This round's winner is ${winner}`)
+    console.log(`------END OF ROUND ${round_num}-------`);
+
 });
 
 
