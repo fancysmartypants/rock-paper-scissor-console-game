@@ -42,7 +42,7 @@ function getHumanChoice(){
     return answer;
 }
 
-const alertdiv = document.getElementById('alert');
+
 
 function playRound(pc,player){
     
@@ -115,6 +115,7 @@ const dashboard = document.getElementById('dashboard');
 
 let playerChoice="";
 
+const alertdiv = document.getElementById('alert');
 
 // All of the console output
 
@@ -131,6 +132,7 @@ let playerScore;
 const matchTxt = "Uh-o, it's a match. Try again.";
 
 //  create references to li element
+
 const liPlayerChoice = document.createElement("li");
 
 const liPCChoice = document.createElement("li");
@@ -145,8 +147,46 @@ const liFinalResult = document.createElement("li");
 
 const liMatch = document.createElement("li");
 
+let finalResult;
+
+function showFinalResult(){
+
+    alertdiv.appendChild(liFinalResult);
+    liFinalResult.textContent = finalResult;
+
+}
 
 
+function displayFinalResult (){
+
+    //if pc_score or player_score is 5, display finalResult.
+
+    if ((pc_score==5)||(player_score==5)) {
+
+
+        if (pc_score==5){
+
+            final_winner = "PC";
+            finalResult=`${final_winner} is the final winner!`;
+
+            console.log(alertdiv);
+
+            showFinalResult();
+
+
+
+        }else {
+            final_winner = "Player";
+            finalResult=`${final_winner} is the final winner!`;
+
+            console.log(alertdiv);
+            showFinalResult();
+        };
+
+};
+
+
+}
 
 
 // add event listener to rock button
@@ -166,6 +206,7 @@ rock.addEventListener('click', (e)=>{
     console.log("pc score is:"+pc_score);
     console.log(`This round's winner is ${winner}`)
     console.log(`------END OF ROUND ${round_num}-------`);
+
 
 });
 
@@ -187,6 +228,7 @@ paper.addEventListener('click', (e)=>{
     console.log(`This round's winner is ${winner}`)
     console.log(`------END OF ROUND ${round_num}-------`);
 
+
 });
 
 
@@ -207,6 +249,8 @@ scissor.addEventListener('click', (e)=>{
     console.log("pc score is:"+pc_score);
     console.log(`This round's winner is ${winner}`)
     console.log(`------END OF ROUND ${round_num}-------`);
+
+
 
 });
 
@@ -281,5 +325,6 @@ function playGame(playerChoice){
 
 
     displayResult();
+    displayFinalResult ();
 }
 
