@@ -2,6 +2,9 @@
 
 This is a rock paper scissor game project played on a javascript console. The purpose of this document is to explain how does the logic of the program work, and through explaining this document, I worked out how to code it in JavaScript language. But the logic itself can be implemented in any programming languages.
 
+# How to Play
+
+Download game.html and open the developer's console with F12. Call `playGame()` to start playing.
 
 # Guide on How to Create this Game
 
