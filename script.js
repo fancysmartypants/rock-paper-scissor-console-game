@@ -104,7 +104,7 @@ function declareResult(){
     console.log(`Final winner is: ${final_winner} `)
 }
 
-
+const resetTxt = `Click any button to start the game again.`;
 const rock=document.getElementById('r');
 const paper=document.getElementById('p');
 const scissor=document.getElementById('s');
@@ -133,33 +133,54 @@ const matchTxt = "Uh-o, it's a match. Try again.";
 
 //  create references to li element
 
-const liPlayerChoice = document.createElement("li");
+let liPlayerChoice = document.createElement("li");
 
-const liPCChoice = document.createElement("li");
+let liPCChoice = document.createElement("li");
 
-const liPlayerScore = document.createElement("li");
+let liPlayerScore = document.createElement("li");
 
-const liPCScore = document.createElement("li");
+let liPCScore = document.createElement("li");
 
-const liRoundResult = document.createElement("li");
+let liRoundResult = document.createElement("li");
 
-const liFinalResult = document.createElement("li");
+let liFinalResult = document.createElement("li");
 
-const liMatch = document.createElement("li");
+let liMatch = document.createElement("li");
+
+let liReset = document.createElement("li");
 
 let finalResult;
+
+
+function showReset(){
+
+    alertdiv.appendChild(liReset);
+    liReset.textContent=resetTxt;
+
+}
+
+
 
 function showFinalResult(){
 
     alertdiv.appendChild(liFinalResult);
     liFinalResult.textContent = finalResult;
+    //make the final result text very large
+    liFinalResult.style.fontSize= "25px";
+    liFinalResult.style.color= "yellow";
+
+    // also alert click any button to restart
+
+    showReset();
 
 }
 
+// when either pc or player reaches a score of 5, the game is over:
 
 function displayFinalResult (){
 
-    //if pc_score or player_score is 5, display finalResult.
+    //if pc_score or player_score is 5,
+    //final winner is announced 
 
     if ((pc_score==5)||(player_score==5)) {
 
@@ -181,9 +202,38 @@ function displayFinalResult (){
 
             console.log(alertdiv);
             showFinalResult();
+
         };
 
 };
+
+
+
+function resetGame(){
+    //when resetGame is called, 
+
+    //remove all messages
+    liFinalResult.remove();
+    liPlayerScore.remove();
+    liPCScore.remove();
+    liPlayerChoice.remove();
+    liPCChoice.remove();
+    liRoundResult.remove();
+
+
+    //set round_num to 0
+    //set player score, pc score to 0
+    round_num=0;
+    player_score=0;
+    pc_score=0;
+
+    //display reset message
+    showReset();
+
+
+}
+
+
 
 
 }
@@ -192,6 +242,7 @@ function displayFinalResult (){
 // add event listener to rock button
 rock.addEventListener('click', (e)=>{
     liMatch.remove();
+    liReset.remove();
 
     playerChoice = "rock";
     playerChoiceTxt = `You picked ${playerChoice}.`;
@@ -213,6 +264,7 @@ rock.addEventListener('click', (e)=>{
 // add event listener to paper button
 paper.addEventListener('click', (e)=>{
     liMatch.remove();
+    liReset.remove();
 
     playerChoice = "paper";
     playerChoiceTxt = `You picked ${playerChoice}.`;
