@@ -1,61 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Racing+Sans+One&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor Game</title>
-    <style>
-        ul {
-          list-style-type: none;
-          margin: 10px;
-          padding: 10px;
-        }
-
-        li {
-          list-style-type: none;
-
-        }
-
-        button {
-            margin: 10px;
-            font-size: xx-large;
-            background-color: crimson;
-            padding: 20px;
-        }
-
-
-      </style>
-    <link rel="stylesheet" href="/Users/ronoxia/Documents/Codebase/OdinProject/RockPaperScissorsConsoleGame/rock-paper-scissor-console-game/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock-Paper-Scissor Game</h1>
 
-    <div id="gameRule">
-        <h2>
-            Game Rule
-        </h2>
-
-        <p>
-            Choose one of the following button. If it's a match, the round doesn't count.    
-        </p>
-        <p>
-            The winner will be announced when one reaches a score of 5.
-        </p>
+    <div class="fixed-background">
+        <img src="img/gamboy.jpg" alt="Gameboy" class="background-image">
     </div>
 
-
-    <div id="alert"> 
-
-    </div>
-    <div>
-        <button id="r">Rock</button>
-        <button id="p">Paper</button>
-        <button id="s">Scissor</button>
-    </div>
-    <div>
-        <ul id="dashboard"></ul>
+    <div class="top-message-container" id="top-message-container">
+        <h2>Welcome to Rock Paper Scissor Game!</h2>
+        <p>Choose Rock (R), Paper (P), or Scissors (S). First to 5 wins!</p>
+        <p id="button-pressed-message"></p>
     </div>
 
-    <script src="/Users/ronoxia/Documents/Codebase/OdinProject/RockPaperScissorsConsoleGame/rock-paper-scissor-console-game/script.js"></script>
+    <div class="button-container">
+        <div id="maker-container">Made By RX</div>
+        <button id="button-r">R</button>
+        <button id="button-p">P</button>
+        <button id="button-s">S</button>
+        <div id="display">Game Display</div>
+        <div id="title-container">Rock Paper Scissor</div>
+        
+    </div>
+
+    <div id="warning-message" class="warning-message">
+        Please switch to a wider display for the best experience.
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,22 @@
 console.log("JavaScript successfully loaded");
 
+
+function checkScreenSize() {
+    const warningMessage = document.getElementById('warning-message');
+    if (window.innerWidth < 1003 || window.innerHeight < 531) {
+        warningMessage.style.display = 'flex';
+    } else {
+        warningMessage.style.display = 'none';
+    }
+}
+
+window.addEventListener('resize', checkScreenSize);
+window.addEventListener('load', checkScreenSize);
+
+
+
+
+
 let winner=""; //stores winner of the round.
 let player_score=0;
 let pc_score=0;
@@ -105,9 +122,9 @@ function declareResult(){
 }
 
 const resetTxt = `Click any button to start the game again.`;
-const rock=document.getElementById('r');
-const paper=document.getElementById('p');
-const scissor=document.getElementById('s');
+const rock=document.getElementById('button-r');
+const paper=document.getElementById('button-p');
+const scissor=document.getElementById('button-s');
 
 let pcChoice='';
 
@@ -233,6 +250,12 @@ function resetGame(){
 
 }
 
+
+// all buttons need to have a function 
+
+//that removes all messages if a final winner is declared.
+
+// use custom event
 
 
 
