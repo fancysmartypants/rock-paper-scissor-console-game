@@ -64,7 +64,7 @@ function getHumanChoice(){
 function playRound(pc,player){
     
     if (pc===player){
-        console.log("Uh-o, it's a match. Try again.");
+        console.log(" Uh-o, it's a match! Try again.");
         alertdiv.appendChild(liMatch);
         liMatch.textContent = matchTxt;
 
@@ -128,11 +128,11 @@ const scissor=document.getElementById('button-s');
 
 let pcChoice='';
 
-const dashboard = document.getElementById('dashboard');
+const dashboard = document.getElementById('display');
 
 let playerChoice="";
 
-const alertdiv = document.getElementById('alert');
+const alertdiv = document.getElementById('alert-container');
 
 // All of the console output
 
@@ -350,7 +350,9 @@ function displayResult(){
 
 
 function showPlayerChoice(){
-    dashboard.appendChild(liPlayerChoice);
+    alertdiv.textContent = '';
+
+    alertdiv.appendChild(liPlayerChoice);
     liPlayerChoice.textContent = playerChoiceTxt;
 }
 
@@ -371,8 +373,28 @@ function showPCScore(){
 }
 
 function showPCChoice(){
-    dashboard.appendChild(liPCChoice);
-    liPCChoice.textContent=pcChoiceTxt;
+
+    const imgElement=document.createElement('img');
+    
+    if (pcChoice=='rock'){
+        imgElement.src=("img/rock.png");
+
+    }else if (pcChoice=='paper'){
+        imgElement.src=("img/paper.png");
+
+
+    }else if (pcChoice == 'scissor'){
+        imgElement.src=("img/scissor.png");
+
+    }
+    const imagesSection=document.getElementById('images-section');
+    imagesSection.textContent = ''; // Clear previous image
+    imgElement.alt = pcChoice;
+    imgElement.style.width = '70px';  // Example width
+    imgElement.style.height = '70px'; // Example height
+
+    imagesSection.appendChild(imgElement);
+
 
 }
 
@@ -391,6 +413,9 @@ function playGame(playerChoice){
     pcChoice = getComputerChoice();
     console.log(`pc choice is ${pcChoice} within the playerChoice function`);
     //SHOW CHOICES
+
+    //use pcChoice to set imageUrl
+    
     pcChoiceTxt = `PC picked ${pcChoice}.` ;
     
     showPCChoice();

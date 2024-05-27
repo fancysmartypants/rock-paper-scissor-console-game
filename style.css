@@ -86,7 +86,7 @@ body, html {
     left: 15.5%;
     width: 68.5%; /* Fixed size */
     height: 68%; /* Fixed size */
-    background: white;
+    background: rgb(27, 27, 27);
     color: white;
     display: flex;
     justify-content: center;
@@ -179,4 +179,96 @@ body, html {
     text-align: center;
     font-family: 'Racing Sans One', sans-serif;
     z-index: 1001; /* Ensure it is above other elements */
+}
+
+#alert-container {
+    position: absolute;
+    top: 60%; /* Updated position */
+    left: 1.3%; /* Updated position */
+    width: 91.5%; /* Updated width */
+    height: 11%; /* Twice as tall as its previous height */
+    background: rgb(32,62,85); /* Dark yellow color */
+    color: white;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    z-index: 21; /* Ensure it is on top of the display */
+    font-family: 'Pixelify Sans', sans-serif; /* Use the specified font */
+    border: 2px solid rgb(204,213,226); /* White border */
+    outline: 4px solid rgb(187,154,56); /* Outer dark yellow border */
+   
+
+}
+
+
+
+#assets-container {
+    position: absolute;
+    top: 10%; /* Adjust as needed to cover the display container */
+    left: 16.3%;
+    width: 67%; /* Same width as the alert container */
+    height: 66%; /* Height of display container minus a small margin */
+    background: rgba(31,35,40, 0.99); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 20; /* Ensure it is on top of the display but below the alert container */
+    pointer-events: none; /* Allow clicks to pass through to the underlying elements if needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the sections */
+}
+
+#score-section, #round-section {
+    width: 95%;
+    height: 10%;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+#score-section {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-top-left-radius: 10px; /* Rounded corners for top section */
+    border-top-right-radius: 10px; /* Rounded corners for top section */
+    font-size: 1.2rem;
+}
+
+#images-section {
+
+
+    width: 100%;
+    height: 40%;
+
+    text-align: center;
+    font-family: 'Pixelify Sans', sans-serif;
+
+    background: rgba(210, 236, 207, 0.8); /* More transparent background for middle section */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: -65px; /* Adjust this value to move the section up */
+}
+
+
+#round-section {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-bottom-left-radius: 10px; /* Rounded corners for bottom section */
+    border-bottom-right-radius: 10px; /* Rounded corners for bottom section */
+    font-size: 1.2rem;
+}
+
+#alert-container ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+#alert-container li {
+    display: inline; /* Ensure each list item is displayed as a block element */
+    margin-bottom: 5px; /* Add some space between list items */
 }
