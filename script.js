@@ -1,5 +1,19 @@
 console.log("JavaScript successfully loaded");
 
+function updateGameStatus(status) {
+    const gameStatusImage = document.getElementById("game-status-image");
+
+    if (status === 'start') {
+        gameStatusImage.src = "img/pixel-robot/robot-run.gif";
+    } else if (status === 'PC-win') {
+        gameStatusImage.src = "img/pixel-robot/robot-idle.gif";
+    } else if (status === 'Player-win') {
+        gameStatusImage.src = "img/pixel-robot/robot-preview.png";
+    } 
+
+    gameStatusImage.alt = status;
+}
+
 
 function checkScreenSize() {
     const warningMessage = document.getElementById('warning-message');
@@ -264,6 +278,8 @@ function resetGame(){
 
 // add event listener to rock button
 rock.addEventListener('click', (e)=>{
+    updateGameStatus('start');
+
     liMatch.remove();
     liReset.remove();
 
@@ -275,6 +291,8 @@ rock.addEventListener('click', (e)=>{
     playGame(playerChoice);
     
     console.log(`winner is ${winner}`);
+    updateGameStatus( `${winner}-win`);
+
     console.log(`------ROUND ${round_num} RESULT:-------`);
     console.log("player score is:"+player_score);
     console.log("pc score is:"+pc_score);
@@ -286,6 +304,8 @@ rock.addEventListener('click', (e)=>{
 
 // add event listener to paper button
 paper.addEventListener('click', (e)=>{
+    updateGameStatus('start');
+
     liMatch.remove();
     liReset.remove();
 
@@ -297,6 +317,8 @@ paper.addEventListener('click', (e)=>{
     playGame(playerChoice);
     
     console.log(`winner is ${winner}`);
+    updateGameStatus( `${winner}-win`);
+
     console.log(`------ROUND ${round_num} RESULT:-------`);
     console.log("player score is:"+player_score);
     console.log("pc score is:"+pc_score);
@@ -309,6 +331,8 @@ paper.addEventListener('click', (e)=>{
 
 // add event listener to scissor button
 scissor.addEventListener('click', (e)=>{
+    updateGameStatus('start');
+
     liMatch.remove();
 
     playerChoice = "scissor";
@@ -319,6 +343,8 @@ scissor.addEventListener('click', (e)=>{
     playGame(playerChoice);
     
     console.log(`winner is ${winner}`);
+    updateGameStatus( `${winner}-win`);
+
     console.log(`------ROUND ${round_num} RESULT:-------`);
     console.log("player score is:"+player_score);
     console.log("pc score is:"+pc_score);
@@ -335,15 +361,14 @@ function displayResult(){
     roundResult = `Round ${round_num} Result: 
     Winner is ${winner}.`;
 
-    //SHOW RESULTS
-    showResult();
+    //update round in the round section 
+    updateRound();
 
     PCScore = `PC score is ${pc_score}.`;
     playerScore = `Player score is ${player_score}.`;
 
-    //SHOW SCORES
-    showPlayerScore();
-    showPCScore();
+    //SHOW SCORES on score board
+    updateScore();
 }
 
 
@@ -359,41 +384,39 @@ function showPlayerChoice(){
 
 
 
-function showPlayerScore(){
-    dashboard.appendChild(liPlayerScore);
-    liPlayerScore.textContent = playerScore;
+function updateScore(){
+    const scoreSection = document.getElementById("score-section");
+    scoreSection.textContent=`Scores: Player ${player_score} - PC ${pc_score}`;
 }
 
 
 
 
-function showPCScore(){
-    dashboard.appendChild(liPCScore);
-    liPCScore.textContent=PCScore;
-}
 
 function showPCChoice(){
 
-    const imgElement=document.createElement('img');
+    const pcChoiceImage = document.getElementById('pc-choice-image');
     
     if (pcChoice=='rock'){
-        imgElement.src=("img/rock.png");
+        pcChoiceImage.src=("img/rock.png");
 
     }else if (pcChoice=='paper'){
-        imgElement.src=("img/paper.png");
+        pcChoiceImage.src=("img/paper.png");
 
 
     }else if (pcChoice == 'scissor'){
-        imgElement.src=("img/scissor.png");
+        pcChoiceImage.src=("img/scissor.png");
 
     }
+    pcChoiceImage.alt = pcChoice;
+
     const imagesSection=document.getElementById('images-section');
     imagesSection.textContent = ''; // Clear previous image
-    imgElement.alt = pcChoice;
-    imgElement.style.width = '70px';  // Example width
-    imgElement.style.height = '70px'; // Example height
+    pcChoiceImage.alt = pcChoice;
+    pcChoiceImage.style.width = '70px';  // Example width
+    pcChoiceImage.style.height = '70px'; // Example height
 
-    imagesSection.appendChild(imgElement);
+    imagesSection.appendChild(pcChoiceImage);
 
 
 }
@@ -402,9 +425,10 @@ function showPCChoice(){
 
 
 
-function showResult(){
-    dashboard.appendChild(liRoundResult);
-    liRoundResult.textContent=roundResult;
+function updateRound(){
+    const roundSection = document.getElementById('round-section');
+    roundSection.textContent = `Round: ${round_num}`;
+
 }
 
 
