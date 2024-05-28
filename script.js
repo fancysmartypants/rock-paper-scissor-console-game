@@ -1,14 +1,36 @@
 console.log("JavaScript successfully loaded");
+function resetGame(){
+    //set round_num to 0
+    //set player score, pc score to 0
+    round_num=0;
+    player_score=0;
+    pc_score=0;
+    //update score
+    const scoreSection = document.getElementById("score-section");
+    scoreSection.textContent = `Scores: Player ${player_score} - PC ${pc_score}`;
+
+    const roundSection = document.getElementById('round-section');
+    roundSection.textContent = `Round: ${round_num}`;
+
+    const finalResultsContainer = document.getElementById('final-results-container');
+    if (finalResultsContainer) {
+        finalResultsContainer.remove();
+    }
+
+    updateGameStatus('start');
+
+}
+
 
 function updateGameStatus(status) {
     const gameStatusImage = document.getElementById("game-status-image");
 
     if (status === 'start') {
-        gameStatusImage.src = "img/pixel-robot/robot-run.gif";
-    } else if (status === 'PC-win') {
-        gameStatusImage.src = "img/pixel-robot/robot-idle.gif";
-    } else if (status === 'Player-win') {
         gameStatusImage.src = "img/pixel-robot/robot-preview.png";
+    } else if (status === 'PC-win') {
+        gameStatusImage.src = "img/pixel-robot/robot-run.gif" ;
+    } else if (status === 'Player-win') {
+        gameStatusImage.src = "img/pixel-robot/robot-idle.gif";
     } 
 
     gameStatusImage.alt = status;
@@ -135,10 +157,11 @@ function declareResult(){
     console.log(`Final winner is: ${final_winner} `)
 }
 
-const resetTxt = `Click any button to start the game again.`;
+const resetTxt = `Click start button to play again.`;
 const rock=document.getElementById('button-r');
 const paper=document.getElementById('button-p');
 const scissor=document.getElementById('button-s');
+const start=document.getElementById('button-start');
 
 let pcChoice='';
 
@@ -160,7 +183,7 @@ let PCScore;
 
 let playerScore;
 
-const matchTxt = "Uh-o, it's a match. Try again.";
+const matchTxt = " Uh-o, it's a match! Try again.";
 
 //  create references to li element
 
@@ -183,28 +206,13 @@ let liReset = document.createElement("li");
 let finalResult;
 
 
-function showReset(){
-
-    alertdiv.appendChild(liReset);
-    liReset.textContent=resetTxt;
-
-}
+// When one player wins, ask play again? 
 
 
 
-function showFinalResult(){
 
-    alertdiv.appendChild(liFinalResult);
-    liFinalResult.textContent = finalResult;
-    //make the final result text very large
-    liFinalResult.style.fontSize= "25px";
-    liFinalResult.style.color= "yellow";
 
-    // also alert click any button to restart
 
-    showReset();
-
-}
 
 // when either pc or player reaches a score of 5, the game is over:
 
@@ -238,31 +246,38 @@ function displayFinalResult (){
 
 };
 
+function showFinalResult(){
+    const imagesSection = document.getElementById("images-section");
+    //imagesSection.textContent='';
+    let finalResultDisplay= document.createElement("div");
+    finalResult.id = "FinalResultDiv";
+
+    const gameStatusImage = document.getElementById('game-status-image');
+    const pcChoiceImage = document.getElementById('pc-choice-image');
+    imagesSection.insertBefore(finalResultDisplay, pcChoiceImage);
 
 
-function resetGame(){
-    //when resetGame is called, 
 
-    //remove all messages
-    liFinalResult.remove();
-    liPlayerScore.remove();
-    liPCScore.remove();
-    liPlayerChoice.remove();
-    liPCChoice.remove();
-    liRoundResult.remove();
+    finalResultDisplay.appendChild(liFinalResult);
+
+    // alertdiv.appendChild(liFinalResult);
+    liFinalResult.textContent = finalResult;
+    //make the final result text very large
+    liFinalResult.style.fontSize= "20px";
+    liFinalResult.style.color= "black";
+
+    // also alert click any button to restart
 
 
-    //set round_num to 0
-    //set player score, pc score to 0
-    round_num=0;
-    player_score=0;
-    pc_score=0;
-
-    //display reset message
-    showReset();
+    finalResultDisplay.appendChild(liReset);
+    liReset.textContent=resetTxt;
+    
 
 
 }
+
+
+
 
 
 // all buttons need to have a function 
@@ -274,6 +289,17 @@ function resetGame(){
 
 
 }
+
+
+// add event listener to start button
+start.addEventListener('click', (e)=>{
+    updateGameStatus('start');
+    resetGame();
+
+
+});
+
+
 
 
 // add event listener to rock button
@@ -411,10 +437,10 @@ function showPCChoice(){
     pcChoiceImage.alt = pcChoice;
 
     const imagesSection=document.getElementById('images-section');
-    imagesSection.textContent = ''; // Clear previous image
+   //  imagesSection.textContent = ''; // Clear previous image
     pcChoiceImage.alt = pcChoice;
-    pcChoiceImage.style.width = '70px';  // Example width
-    pcChoiceImage.style.height = '70px'; // Example height
+    pcChoiceImage.style.width = '30px';  // Example width
+    pcChoiceImage.style.height = '30px'; // Example height
 
     imagesSection.appendChild(pcChoiceImage);
 

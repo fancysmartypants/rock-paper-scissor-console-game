@@ -49,7 +49,7 @@ body, html {
     width: 60px; /* Fixed size */
     height: 60px; /* Fixed size */
     border-radius: 50%;
-    color: rgb(7, 7, 7);
+    color: rgba(255, 255, 255, 0.557);
 
     box-shadow: 0 10px 15px black, inset 0 6px 3px rgba(87,87,87, 0.9); /* 3D effect */
     text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); /* Text shadow */
@@ -79,6 +79,18 @@ body, html {
     bottom: 57%;
     right: -17%;
 }
+
+
+#button-start {
+    bottom: 27%;
+    left: 2.5%; /* Adjust position as needed */
+    width: 28px; /* One-third of 60px (original size) */
+    height: 28px; /* One-third of 60px (original size) */
+    box-shadow: 0 10px 15px black, inset -1px 4px 3px rgba(87,87,87, 0.9); /* 3D effect */
+
+}
+
+
 
 #display {
     position: absolute;
@@ -272,3 +284,16 @@ body, html {
     display: inline; /* Ensure each list item is displayed as a block element */
     margin-bottom: 5px; /* Add some space between list items */
 }
+
+#images-section ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+#images-section li {
+    display: block; /* Ensure each list item is displayed as a block element */
+    margin-bottom: 5px; /* Add some space between list items */
+}
+
+
